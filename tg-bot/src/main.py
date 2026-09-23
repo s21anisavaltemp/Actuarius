@@ -19,7 +19,9 @@ from telegram.ext import (
 
 load_dotenv()
 
-BOT_TOKEN = os.getenv("BOT_TOKEN", "")
+PROXY_URL = "socks5://127.0.0.1:12334"
+
+BOT_TOKEN = os.getenv("BOT_TOKEN", "8762587110:AAFA0UoROvz3X8iW1B1agrcl3IcmrUX7m5M")
 ALLOWED_USER_ID = os.getenv("ALLOWED_USER_ID", "")
 
 RECORDINGS_DIR = Path(
@@ -506,6 +508,7 @@ def main() -> None:
     application = (
         Application.builder()
         .token(BOT_TOKEN)
+        .proxy(PROXY_URL)
         .read_timeout(30)       # Increase network read timeout
         .write_timeout(30)      # Increase network write timeout
         .connect_timeout(30)    # Increase initial connection timeout
